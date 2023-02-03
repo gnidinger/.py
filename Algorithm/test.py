@@ -1,6 +1,5 @@
-chess = [1, 1, 2, 2, 2, 8]
+a = 12 + 3j
+b = 1 - 23j
+c = complex(1, 23)
 
-a = list(map(int, input().split()))
-
-for i in range(6):
-    print(chess[i] - a[i], end=' ')
+print(a, b, c)
