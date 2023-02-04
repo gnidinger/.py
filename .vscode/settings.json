@@ -1,0 +1,9 @@
+{
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.iconTheme": "eq-material-theme-icons-darker",
+    "python.linting.enabled": false,
+}

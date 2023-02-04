@@ -1,5 +1,8 @@
-a = 12 + 3j
-b = 1 - 23j
-c = complex(1, 23)
+import sys
 
-print(a, b, c)
+result = set()
+
+for i in range(10):
+    result.add(int(sys.stdin.readline()) % 42)
+
+print(len(result))
