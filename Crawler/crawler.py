@@ -25,7 +25,7 @@ chrome_options = Options()
 user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
 
 chrome_options.add_argument('user-agent' + user_agent)
-# chrome_options.add_argument('headless')  # 브라우저 실행 안 함
+chrome_options.add_argument('headless')  # 브라우저 실행 안 함
 # chrome_options.add_argument('--disable-gpu')  # Linux에서 headless 사용시 필요함
 chrome_options.add_argument('--start-fullscreen')  # 최대 크기로 시작
 chrome_options.add_argument('--window-size=1920,1080')  # 해상도
@@ -62,32 +62,26 @@ def create_info(beer_info):
     df.to_excel("/Users/gnidinger/Desktop/test.xlsx", index=False)
 
 
-# tmplist = [[result[2], result[7], result[8], result[10], result[12]], [result[2], result[7], result[8], result[10], result[12]]]
-# df = pd.DataFrame(
-#     data=[[result[2], result[7], result[8], result[10], result[12]]], index=(['1']), columns=[['eng_name', 'country', 'beer_category', 'abv', 'ibu']]
-# )
-# df = pd.DataFrame(data=tmplist, columns=[['eng_name', 'country', 'beer_category', 'abv', 'ibu']])
-
-# df.to_excel("/Users/gnidinger/Desktop/test.xlsx", sheet_name='test')
-
-
 ########################################################################################
 ##                                                                                    ##
 ##                                   Crawling                                         ##
 ##                                                                                    ##
 ########################################################################################
 
-driver.get(START_URL)
+# driver.get(START_URL)
 
-time.sleep(5)
+# time.sleep(5)
 
 for i in range(len(TEST_LIST)):
+    driver.get(START_URL)
+    time.sleep(3)
+
     try:
         search_box = driver.find_element(By.XPATH, SEARCH_BOX)
     except NoSuchElementException:
         break
     else:
-        search_box.send_keys(Keys.COMMAND, 'a')
+        search_box.send_keys(Keys.COMMAND + 'a')
         time.sleep(1)
         search_box.send_keys(TEST_LIST[i])
         time.sleep(2)
@@ -102,6 +96,7 @@ for i in range(len(TEST_LIST)):
             continue
         else:
             create_info(beer_info)
+            time.sleep(3)
 
 driver.close()
 driver.quit()
