@@ -1,15 +1,8 @@
 import sys
 
-t = int(sys.stdin.readline())
 
-result = []
+result = [1, 2, 3, 4]
 
-for i in range(t):
-    a, b = sys.stdin.readline().split()
-    c = list(b)
-    d = ''
-    for j in c:
-        d += j * int(a)
-    result.append(d)
 
-print(*result, sep='\n')
+print(result[1])
+print(result[-2])

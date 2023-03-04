@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+from tabulate import tabulate
 
 dict_data = {'c0': [1, 2, 3], 'c1': [4, 5, 6], 'c2': [7, 8, 9], 'c3': [10, 11, 12], 'c4': [13, 14, 15]}
 
@@ -40,3 +42,10 @@ df3 = pd.DataFrame(exam_data, index=['진현', '민지', '성철', '지산'])
 # print(df3['수학'])
 # print(df3[['수학']])
 # print(df3[['수학', '영어']])
+
+exam_data = {'이름': ['진현', '민지', '성철', '지산'], '수학': [100, 40, 70, 30], '영어': [50, 70, 90, 80], '생물': [50, 90, 70, 18], '도덕': [88, 68, 58, 77]}
+
+df4 = pd.DataFrame(exam_data)
+df4['국어'] = 80
+
+print(tabulate(df4, headers='keys', tablefmt='psql', showindex=True))

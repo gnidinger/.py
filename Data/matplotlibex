@@ -1,0 +1,59 @@
+import matplotlib.pyplot as plt
+
+data_f = open('data/Seoul_pop1.csv')
+
+# 년도 리스트
+years = []
+# 인구수 리스트
+populations = []
+
+for line in data_f:
+    (year, population) = line.split(',')
+    years.append(int(year))
+    populations.append(int(population))
+
+data_f.close()
+
+print(years)
+print(populations)
+
+# 꺾은선그래프
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+
+plt.plot(years, populations, color='red', marker='o', linestyle='solid')
+
+plt.title('Seoul Population Change')
+
+plt.ylabel('10Million')
+
+plt.show()
+
+# 막대그래프
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+
+plt.bar(years, populations, 2.5)
+
+plt.title('Seoul Population Change')
+
+plt.ylabel('10Million')
+
+plt.show()
+
+# 막대그래프 2
+
+sports = ['Archery', 'Badminton', 'Boxing', 'Judo', 'Taekwondo', 'Wrestling']
+medals = [39, 19, 20, 43, 19, 36]
+
+xs = range(0, 12, 2)
+
+plt.bar(xs, medals, 1.2)
+
+plt.xticks(xs, sports)
+
+plt.ylabel("Medals")
+plt.title("Olympic Medals")
+plt.show()
