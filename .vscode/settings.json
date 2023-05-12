@@ -5,7 +5,7 @@
     },
     "workbench.colorTheme": "One Dark Pro Darker",
     "workbench.iconTheme": "eq-material-theme-icons-darker",
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "python.formatting.blackArgs": [
         "--skip-string-normalization",
         "--line-length",
@@ -14,7 +14,7 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python",
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true
     },
 }

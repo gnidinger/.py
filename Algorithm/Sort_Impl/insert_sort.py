@@ -8,7 +8,7 @@ def insert_sort(list):
         list[j + 1] = tmp  # 자리를 찾으면 삽입
 
 
-list = [1, 4, 5, 2, 6, 7, 5, 3, 4, 6, 7, 4, 3, 2]
+list = [4, 2, 5, 4, 3, 1, 10, 3]
 
 insert_sort(list)
 
