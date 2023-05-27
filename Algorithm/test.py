@@ -1,4 +1,6 @@
-lst = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5}
-num = {i for i in lst}
+fruits = ['apple', 'banana', 'orange']
 
-print(num)
+# enumerate를 이용해 딕셔너리 생성
+enumerated_dict = {index: fruit for index, fruit in enumerate(fruits)}
+
+print(enumerated_dict)
