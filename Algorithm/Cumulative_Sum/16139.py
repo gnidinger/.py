@@ -10,6 +10,8 @@ for i, char in enumerate(string):
         lst[j][i + 1] = lst[j][i]
     lst[ord(char) - ord('a')][i + 1] += 1
 
+results = []
+
 for _ in range(q):
     query = list(sys.stdin.readline().rstrip().split())
     char = ord(query[0]) - ord('a')
@@ -18,4 +20,6 @@ for _ in range(q):
 
     count = lst[char][end + 1] - lst[char][start]
 
-    print(count)
+    results.append(count)
+
+sys.stdout.write('\n'.join(map(str, results)) + '\n')

@@ -6,7 +6,7 @@ lst = []
 for i in range(n):
     lst.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
-lst = sorted(lst, key=lambda x: x[1])
+lst = sorted(lst, key=lambda x: (x[1], x[0]))
 
 cnt = 1
 end_time = lst[0][1]
