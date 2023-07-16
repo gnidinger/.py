@@ -16,7 +16,7 @@ def dfs(node):
     order[node] = cnt
     cnt += 1
 
-    for next in sorted(graph[node]):
+    for next in sorted(graph[node], reverse=True):
         if not visited[next]:
             dfs(next)
 
