@@ -1,6 +1,8 @@
 import sys
 from collections import deque
 
+sys.setrecursionlimit(10**6)
+
 t = int(sys.stdin.readline().rstrip())
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
