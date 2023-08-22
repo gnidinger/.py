@@ -25,3 +25,27 @@ class MLP(nn.Module):
 
 
 model = MLP()
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+for epoch in range(5):
+    for batch_idx, (data, target) in enumerate(train_loader):
+        optimizer.zero_grad()
+        output = model(data)
+        loss = criterion(output, target)
+        loss.backward()
+        optimizer.step()
+    print(f"Epoch {epoch}: Loss = {loss.item()}")
+
+correct = 0
+total = 0
+
+with torch.no_grad():
+    for data, target in test_loader:
+        output = model(data)
+        _, predicted = torch.max(output.data, 1)
+        total += target.size(0)
+        correct += (predicted == target).sum().item()
+
+print(f"Accuracy: {100 * correct / total}%")
