@@ -1,0 +1,20 @@
+{
+  "namespace": "com.astar",
+  "type": "record",
+  "name": "NaverCwalingSchema",
+  "fields": [
+    {
+      "name": "parentId",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "uniqueId",
+      "type": "string"
+    },
+    {
+      "name": "내용",
+      "type": "string"
+    }
+  ]
+}
