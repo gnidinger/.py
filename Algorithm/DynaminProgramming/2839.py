@@ -3,7 +3,6 @@ import sys
 N = int(sys.stdin.readline().rstrip())
 dp = [5001] * (N + 1)
 
-dp[0] = 0
 if N >= 3:
     dp[3] = 1
 if N >= 5:
