@@ -13,6 +13,8 @@ url = "https://search.shopping.naver.com/search/all?query="
 
 driver.get(url + query)
 
+decoded_values = []
+
 try:
     # 일단 하나의 요소가 나타날 때까지 기다림
     WebDriverWait(driver, 5).until(
@@ -28,7 +30,10 @@ try:
         # 'i:'와 ',' 사이의 값 추출
         encoded_str = nclick_value.split("i:")[1].split(",")[0]
         decoded_str = urllib.parse.unquote(encoded_str)
-        print("Decoded value: ", decoded_str)
+        decoded_values.append(decoded_str)
+
+    for value in decoded_values:
+        print("Decoded value: ", value)
 
 except TimeoutException:
     print("Timed out waiting for element to appear")
