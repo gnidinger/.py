@@ -8,7 +8,6 @@ import urllib.parse
 driver = setup_chrome_driver()
 
 query = "마크 제이콥스"
-
 url = "http://suggestqueries.google.com/complete/search?output=toolbar&q="
 
 driver.get(url + query)

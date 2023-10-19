@@ -8,7 +8,6 @@ import urllib.parse
 driver = setup_chrome_driver()
 
 query = "마크 제이콥스"
-
 url = "https://search.shopping.naver.com/search/all?query="
 
 driver.get(url + query)

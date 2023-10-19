@@ -11,29 +11,24 @@ url = "https://m.search.naver.com/search.naver?query="
 
 driver.get(url + query)
 
-elements_texts = []
+links = []
 
 try:
-    # 일단 하나의 요소가 나타날 때까지 기다림
+    # today_hobby를 포함하는 링크 요소가 나타날 때까지 기다림
     WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, "a._slog_visible"))
+        EC.presence_of_element_located((By.CSS_SELECTOR, "a[href*='today_hobby']"))
     )
 
-    # 가장 처음 요소 하나만 검색
-    # element = driver.find_element(By.CSS_SELECTOR, "a._slog_visible")
+    # 모든 today_hobby를 포함하는 링크 요소 검색
+    elements = driver.find_elements(By.CSS_SELECTOR, "a[href*='today_hobby']")
 
-    # print("Element: ", element.text)
-
-    # 모든 요소 검색
-    elements = driver.find_elements(By.CSS_SELECTOR, "a._slog_visible")
-
-    # 각 요소의 텍스트 수집
+    # 각 요소의 주소 수집
     for element in elements:
-        elements_texts.append(element.text)
+        links.append(element.get_attribute("href"))
 
-    # 수집된 텍스트 출력
-    for text in elements_texts:
-        print("Element Found: ", text)
+    # 수집된 주소 출력
+    for link in links:
+        print("Link Found: ", link)
 
 except TimeoutException:
     print("Timed out waiting for element to appear")

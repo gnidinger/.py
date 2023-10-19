@@ -11,7 +11,7 @@ def setup_chrome_driver():
 
     chrome_options.add_argument("user-agent" + user_agent)
     chrome_options.add_argument("headless")  # 브라우저 실행 안 함
-    # chrome_options.add_argument("--disable-gpu")  # GPU 사용 안 함
+    chrome_options.add_argument("--disable-gpu")  # GPU 사용 안 함
     # chrome_options.add_argument('--disable-gpu')  # Linux에서 headless 사용시 필요함
     chrome_options.add_argument("--start-fullscreen")  # 최대 크기로 시작
     chrome_options.add_argument("--disable-extensions")  # 확장 프로그램 사용 안 함
