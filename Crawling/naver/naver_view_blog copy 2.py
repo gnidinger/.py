@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 
 driver = setup_chrome_driver()
 
-query = "무라카미 하루키"
+query = "마크 제이콥스 데이지"
 url = "https://m.search.naver.com/search.naver?query="
 
 driver.get(url + query)
@@ -15,19 +15,30 @@ blog_links = []
 blog_dates = []
 
 try:
+    # 요소가 나타날 때까지 기다림
     WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div.fds-article-box-header a"))
+        EC.presence_of_all_elements_located(
+            (By.CSS_SELECTOR, "div.fds-inner-box.kV0SsxbyPm9jRwiQ8BLD a")
+        )
     )
 
-    elements = driver.find_elements(By.CSS_SELECTOR, "div.fds-article-box-header a")
+    # fds-inner-box 내의 a 태그 검색
+    elements = driver.find_elements(By.CSS_SELECTOR, "div.fds-inner-box.kV0SsxbyPm9jRwiQ8BLD a")
+
+    # 각 요소의 href 속성 수집
     for element in elements:
         blog_links.append(element.get_attribute("href"))
 
-    date_elements = driver.find_elements(By.CSS_SELECTOR, "span.fds-info-sub-inner-text")
-    for date_element in date_elements:
-        # 가져온 텍스트에서 '·' 문자를 기준으로 나눈 후 두 번째 부분을 선택하여 앞뒤 공백을 제거합니다.
-        blog_dates.append(date_element.text.split("·")[1].strip())
+    # fds-inner-box 내의 날짜 정보 검색
+    date_elements = driver.find_elements(
+        By.CSS_SELECTOR, "div.fds-inner-box.kV0SsxbyPm9jRwiQ8BLD .fds-info-sub-inner-text"
+    )
 
+    # 각 요소의 텍스트 정보 수집
+    for date_element in date_elements:
+        blog_dates.append(date_element.text)
+
+    # 수집된 블로그 링크와 날짜 정보 출력
     for link, date in zip(blog_links, blog_dates):
         print("Blog Link Found:", link, "Date:", date)
 

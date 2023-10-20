@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 
 driver = setup_chrome_driver()
 
-query = "마크 제이콥스 데이지"
+query = "마크 제이콥스 데이지 드림"
 url = "https://m.search.naver.com/search.naver?query="
 
 driver.get(url + query)
