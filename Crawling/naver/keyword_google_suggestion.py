@@ -7,7 +7,7 @@ import urllib.parse
 
 driver = setup_chrome_driver()
 
-query = "마크 제이콥스"
+query = "마크 제이콥스 데이지"
 url = "http://suggestqueries.google.com/complete/search?output=toolbar&q="
 
 driver.get(url + query)
@@ -15,7 +15,7 @@ driver.get(url + query)
 suggested_keywords = []
 
 try:
-    WebDriverWait(driver, 10).until(
+    WebDriverWait(driver, 5).until(
         EC.presence_of_all_elements_located((By.CSS_SELECTOR, "suggestion"))
     )
 
