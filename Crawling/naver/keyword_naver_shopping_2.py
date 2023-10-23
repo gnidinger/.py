@@ -9,7 +9,7 @@ import time
 
 driver = setup_chrome_driver()
 
-query = "마크 제이콥스"
+query = input("검색어를 입력해주세요: ")
 url = "https://shopping.naver.com/home"
 
 driver.get(url)

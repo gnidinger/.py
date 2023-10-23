@@ -4,11 +4,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-import time
 
 driver = setup_chrome_driver()
 
-query = "마크 제이콥스 데이지"
+query = input("검색어를 입력해주세요: ")
 url = "https://m.search.naver.com/"
 
 driver.get(url)
