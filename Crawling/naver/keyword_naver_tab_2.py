@@ -33,7 +33,6 @@ try:
     search_box.click()
 
     real_search_box = driver.find_element(By.CSS_SELECTOR, "#query")
-
     real_search_box.send_keys(query + Keys.ENTER)
 
     WebDriverWait(driver, 5).until(
