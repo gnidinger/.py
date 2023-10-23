@@ -22,18 +22,18 @@ import time
 
 chrome_options = Options()
 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
+user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
 
-chrome_options.add_argument('user-agent' + user_agent)
-chrome_options.add_argument('headless')  # 브라우저 실행 안 함
+chrome_options.add_argument("user-agent" + user_agent)
+chrome_options.add_argument("headless")  # 브라우저 실행 안 함
 # chrome_options.add_argument('--disable-gpu')  # Linux에서 headless 사용시 필요함
-chrome_options.add_argument('--start-fullscreen')  # 최대 크기로 시작
-chrome_options.add_argument('--window-size=1920,1080')  # 해상도
-chrome_options.add_argument('--disable-extensions')  # 확장 프로그램 사용 안 함
-chrome_options.add_argument('--disable-popup-blocking')  # 팝업 비활성화
-chrome_options.add_argument('--disable-dev-shm-usage')  # CI가 구현되었거나 Docker를 사용하는 경우
-chrome_options.add_argument('--ignore-certificate-errors')  # '안전하지 않은 페이지' 스킵
-chrome_options.add_argument('lang=en_US')
+chrome_options.add_argument("--start-fullscreen")  # 최대 크기로 시작
+chrome_options.add_argument("--window-size=1920,1080")  # 해상도
+chrome_options.add_argument("--disable-extensions")  # 확장 프로그램 사용 안 함
+chrome_options.add_argument("--disable-popup-blocking")  # 팝업 비활성화
+chrome_options.add_argument("--disable-dev-shm-usage")  # CI가 구현되었거나 Docker를 사용하는 경우
+chrome_options.add_argument("--ignore-certificate-errors")  # '안전하지 않은 페이지' 스킵
+chrome_options.add_argument("lang=en_US")
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
@@ -45,15 +45,15 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 
 def create_info(beer_info):
-    '''
+    """
     Create And Make a Document
-    '''
+    """
 
     df = pd.read_excel("/Users/gnidinger/Desktop/test.xlsx")
 
-    result = list((beer_info.text.split('\n')))
+    result = list((beer_info.text.split("\n")))
 
-    print(*result, sep='\n')
+    print(*result, sep="\n")
 
     info_list = [result[2], result[7], result[8], result[10], result[12]]
 
@@ -81,7 +81,7 @@ for i in range(len(TEST_LIST)):
     except NoSuchElementException:
         break
     else:
-        search_box.send_keys(Keys.COMMAND + 'a')
+        search_box.send_keys(Keys.COMMAND + "a")
         time.sleep(1)
         search_box.send_keys(TEST_LIST[i])
         time.sleep(2)
@@ -91,7 +91,7 @@ for i in range(len(TEST_LIST)):
 
         beer_info = driver.find_element(By.XPATH, TARGET_XPATH)
 
-        element_length = len(list(beer_info.text.split('\n')))
+        element_length = len(list(beer_info.text.split("\n")))
         if element_length < 13:
             continue
         else:
